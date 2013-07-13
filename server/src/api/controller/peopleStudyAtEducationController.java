@@ -9,7 +9,7 @@ import api.model.peopleStudyAtEducationResult;
  */
 public class peopleStudyAtEducationController
 {
-  // Gets list of connections studying at schoolname
+  // Gets list of connections studying at schoolname as A JSON String
   public String getPeopleStudyAtEducation(String schoolname) {
 
     return peopleStudyAtEducationResult.returnConnections(schoolname);

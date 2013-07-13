@@ -107,21 +107,18 @@ var postToServer = function(url) {
   url: "http://localhost:8081/it?query="+encodeURIComponent(url),
   data: data,
   success: function(data, status, xhr) {
-    $("#people_list").empty();
+  	$("#people_list").empty();
     data = data.values; 
     for(var i=0;i<data.length;i++) {
-    
-    $("#people_list").append('<div class="span2" id="img-people-list" align="center"><a href="http://www.linkedin.com"><img src="'+data[i].pictureUrl+'"/></a>'+
-                            '<p>'+ data[i].name+ '</p><p>'+data[i].headline+'</p></div>')
-
-  }
+    $("#people_list").append('<li class="span4"><div class="thumbnail" style="float:left"><img src="'+data[i].pictureUrl+'"/></div><div style="float:left;margin-left:20px"><p align="left">'+data[i].formattedName+'<br/>'+"Amazon Inc"+'<br/>'+"Bengaluru"+'</p>'+'</div></li>');
+	}
   }
   });
 }
 $('#target').bind('keypress',function(e) {
   if(e.keyCode==13)
   {
-    var val = this.value;
+  	var val = this.value;
     postToServer(val);
   }
 });

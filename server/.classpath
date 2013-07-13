@@ -9,6 +9,23 @@
 	<classpathentry kind="lib" path="lib/httpclient-cache-4.2.5.jar"/>
 	<classpathentry kind="lib" path="lib/httpcore-4.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/httpmime-4.2.5.jar"/>
-	<classpathentry kind="lib" path="/Users/dneralla/Downloads/scribe-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/scribe-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4-test-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/xom-1.2.10.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1-tests.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/ezmorph-0.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-testframework-3.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/json-20080701.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

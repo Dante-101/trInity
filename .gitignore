@@ -3,3 +3,4 @@
 *.class
 server/.classpath
 *.iml
+*.xml

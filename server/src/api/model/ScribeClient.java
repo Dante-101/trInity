@@ -69,6 +69,7 @@ public class ScribeClient {
 		service.signRequest(token, request);
 		Response response = request.send();
 		try {
+			System.out.println(response.getBody());
 			output = new JSONObject(response.getBody());
 		} catch (JSONException e) {
 			e.printStackTrace();

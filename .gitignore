@@ -1,7 +1,5 @@
 .idea
 .classpath
 *.class
-
 server/.classpath
-
 *.iml

@@ -60,7 +60,7 @@ public class peopleInIndustryResult
       JSONObject jsontoreturn = new JSONObject();
       jsontoreturn.accumulate("values", this.finalResult);
       this.finalJSON = jsontoreturn;
-      System.out.println(this.finalJSON.toString());
+      //System.out.println(this.finalJSON.toString());
 
       //System.out.println(values.toString());
     } catch (JSONException e) {

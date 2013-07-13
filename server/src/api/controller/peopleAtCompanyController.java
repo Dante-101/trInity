@@ -12,7 +12,7 @@ public class peopleAtCompanyController implements AbstractController
 {
   // Returns all people at companyName in a JSON String
   private String getPeopleAtCompany(String companyName) {
-	System.out.println(companyName);
+	  //System.out.println(companyName);
     peopleAtCompanyResult result = new peopleAtCompanyResult(companyName);
     result.decode();
     return result.getFinalJSON().toString();

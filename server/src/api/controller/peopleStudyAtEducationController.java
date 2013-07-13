@@ -11,7 +11,9 @@ public class peopleStudyAtEducationController implements AbstractController
 {
   // Gets list of connections studying at schoolname as A JSON String
   private String getPeopleStudyAtEducation(String schoolname) {
-    return peopleStudyAtEducationResult.returnConnections(schoolname);
+    peopleStudyAtEducationResult result = new peopleStudyAtEducationResult(schoolname);
+    result.decode();
+    return result.getFinalJSON().toString();
   }
   
   public String getIdentifier() { 

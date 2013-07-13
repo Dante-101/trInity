@@ -36,7 +36,11 @@ public class HelloServlet extends HttpServlet
 		try{
 			if(req == null) { 
 				//WTF Exception
-			} else { 
+			}else if(req.contains("charts"))
+      {
+         ControllerFactory.getResultForQuery("Charts",req);
+      }
+      else {
 				JSONObject nlpJson = new JSONObject(nlpLib.getZiggyResponse(req));
 				System.out.println(nlpJson);
 				JSONArray array  = (JSONArray)nlpJson.get("result");

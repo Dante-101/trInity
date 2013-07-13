@@ -7,7 +7,6 @@ import org.scribe.builder.*;
 import org.scribe.builder.api.*;
 import org.scribe.model.*;
 import org.scribe.oauth.*;
-import com.google.gson.*;
 import java.util.LinkedList;
 
 public class EducationQuery {

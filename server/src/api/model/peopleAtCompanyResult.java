@@ -28,11 +28,9 @@ public class peopleAtCompanyResult
   public void decode() {
     try {
       JSONObject json  = ScribeClient.getResponse(PROTECTED_RESOURCE_URL);
-
+      System.out.println(json);
       JSONArray values = json.getJSONArray("values");
       //System.out.println(values.toString());
-
-
       for (int i = 0; i < values.length(); i++) {
         HashMap<String, String> toAdd = new HashMap<String, String>();
         JSONObject memberattr = values.getJSONObject(i);
@@ -46,7 +44,6 @@ public class peopleAtCompanyResult
               JSONArray positionsvalues = positions.getJSONArray("values");
 
               for (int j = 0; j < positionsvalues.length(); j++) {
-
                 if (positionsvalues.getJSONObject(j).has("company")) {
                   JSONObject company = positionsvalues.getJSONObject(j).getJSONObject("company");
                   if (company.has("name")) {
@@ -69,8 +66,6 @@ public class peopleAtCompanyResult
               }
             }
 
-
-
           }
         }
       }
@@ -82,7 +77,7 @@ public class peopleAtCompanyResult
       //System.out.println(this.finalJSON.toString());
 
       //System.out.println(values.toString());
-    } catch (JSONException e) {
+    } catch (Exception e) {
       System.out.println("\n\n\n" + e);
     }
 

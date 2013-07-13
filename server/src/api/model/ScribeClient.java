@@ -13,7 +13,7 @@ public class ScribeClient {
 	private static final String PROTECTED_RESOURCE_URL = "http://api.linkedin.com/v1/people/~:(first-name,last-name,headline,industry,positions,educations,num-recommenders,connections,skills)?format=json";
 	private static final String API_KEY = "xy6upwkl4yrd";
 	private static final String API_SECRET = "9ur6Www3i7ShnKv7";
-	private static final Token ACCESS_TOKEN = new Token("e44a170a-d830-4a6d-b8a4-156dcc85ec2b" , "4a289fc3-8753-47a8-9c31-485266a2e900");
+	public static Token ACCESS_TOKEN = new Token("1d5615a7-ce7e-4898-b179-1bd6571d634d", "5ee45661-c9a2-4564-9b6a-3309f8643e01");
 
 	public static Token getAccessToken(OAuthService service) {
 
@@ -38,32 +38,51 @@ public class ScribeClient {
 
 		return tkn;
 	}
-	
+
 	public static JSONObject getResponse(String url)
 	{
 		JSONObject output=null;
 
 		OAuthService service = new ServiceBuilder().provider(LinkedInApi.class)
-		// CiEgwWDkA5BFpNrc0RfGyVuSlOh4tig5kOTZ9q97qcXNrFl7zqk-Ts7DqRGaKDCV
 				.apiKey(API_KEY)
-				// dhho4dfoCmiQXrkw4yslork5XWLFnPSuMR-8gscPVjY4jqFFHPYWJKgpFl4uLTM6
 				.apiSecret(API_SECRET).build();
-	   OAuthRequest request = new OAuthRequest(Verb.GET,
+		
+		OAuthRequest request = new OAuthRequest(Verb.GET,
 				url);
 		service.signRequest(ACCESS_TOKEN, request);
 		Response response = request.send();
-	    try {
+		try {
 			output = new JSONObject(response.getBody());
 		} catch (JSONException e) {
-			 e.printStackTrace();
+			e.printStackTrace();
 		}
-	    return output;
+		return output;
+	}
+	public static JSONObject getResponse(String url,Token token)
+	{
+		JSONObject output=null;
+		OAuthService service = new ServiceBuilder().provider(LinkedInApi.class)
+				.apiKey(API_KEY)
+				.apiSecret(API_SECRET).build();
+		OAuthRequest request = new OAuthRequest(Verb.GET,
+				url);
+		service.signRequest(token, request);
+		Response response = request.send();
+		try {
+			output = new JSONObject(response.getBody());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return output;
 	}
 
-	
+
+
 	public static void main(String args[])
 	{
-		System.out.println(getResponse(PROTECTED_RESOURCE_URL).toString());
+		//getResponse(PROTECTED_RESOURCE_URL);
+		//System.out.println(getResponse(PROTECTED_RESOURCE_URL).toString());
+		
 	}
-	
+
 }

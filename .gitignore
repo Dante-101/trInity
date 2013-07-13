@@ -3,3 +3,6 @@
 *.class
 server/.classpath
 *.iml
+*.xml
+
+.DS_Store

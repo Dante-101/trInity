@@ -27,7 +27,7 @@ public class HelloServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 
-		response.addHeader("Access-Control-Allow-Origin", "http://localhost");
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 		response.addHeader("Access-Control-Allow-Headers", "Content-Type");
 		//response.setContentType("text/html");
@@ -36,7 +36,11 @@ public class HelloServlet extends HttpServlet
 		try{
 			if(req == null) { 
 				//WTF Exception
-			} else { 
+			}else if(req.contains("charts"))
+      {
+         ControllerFactory.getResultForQuery("Charts",req);
+      }
+      else {
 				JSONObject nlpJson = new JSONObject(nlpLib.getZiggyResponse(req));
 				System.out.println(nlpJson);
 				JSONArray array  = (JSONArray)nlpJson.get("result");

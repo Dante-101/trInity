@@ -27,7 +27,7 @@ public class HelloServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 
-		response.addHeader("Access-Control-Allow-Origin", "http://localhost");
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 		response.addHeader("Access-Control-Allow-Headers", "Content-Type");
 		//response.setContentType("text/html");

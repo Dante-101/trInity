@@ -68,7 +68,6 @@ public class HelloWorld extends AbstractHandler
         //server.setHandler(new HelloHandler());
  
         server.start();
-        server.join();
     	
     }
 }

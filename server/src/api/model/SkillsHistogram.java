@@ -24,8 +24,8 @@ public class SkillsHistogram {
 	private static String URL = 
 	"http://api.linkedin.com/v1/people-search:(facets:(code,buckets:(code,name,count)))?facets=";//location,network&start=0&count=25&format=json";
 	
-	private JSONObject aJSON;
-	private JSONObject bJSON;
+	private JSONArray aJSON;
+	private JSONArray bJSON;
 	private String a;
 	private String b;
 	
@@ -33,7 +33,7 @@ public class SkillsHistogram {
 	
 	private Integer aTotal;
 	private Integer bTotal;
-	SkillsHistogram(String skills, String a, String b) {
+	public SkillsHistogram(String skills, String a, String b) {
 		this.skills = skills;
 		this.a = a;
 		this.b = b;
@@ -69,9 +69,31 @@ public class SkillsHistogram {
 		temp = values.getJSONObject(1);
 		JSONObject degree = temp.getJSONObject("buckets");
 		setBTotal(degree.getInt("_total"));
+
+    JSONArray tmp = location.getJSONArray("values");
+    JSONArray resultA = new JSONArray();
+    for(int i=0;i<getATotal();i++) {
+      JSONObject tmpp = tmp.getJSONObject(i);
+      JSONObject resTemp = new JSONObject();
+      resTemp.put("value", tmpp.getInt("count"));
+      resTemp.put("label", tmpp.getString("name"));
+      resultA.put(resTemp);
+    }
+    tmp = degree.getJSONArray("values");
+    JSONArray resultB = new JSONArray();
+    for(int i=0;i<getBTotal();i++) {
+      JSONObject tmpp = tmp.getJSONObject(i);
+      JSONObject resTemp = new JSONObject();
+      resTemp.put("value", tmpp.getInt("count"));
+      resTemp.put("label", tmpp.getString("name"));
+      resultB.put(resTemp);
+    }
+    setAJSON(resultA);
+    setBJSON(resultB);
+
 		
-		setAJSON(location);
-		setBJSON(degree);
+		//setAJSON(location);
+		//setBJSON(degree);
 		temp = values.getJSONObject(0);
 		setA((String)temp.get("code"));
 		temp = values.getJSONObject(1);
@@ -90,11 +112,11 @@ public class SkillsHistogram {
 	public String getB() {
 		return this.b;
 	}
-	public void setAJSON(JSONObject json)
+	public void setAJSON(JSONArray json)
 	  {
 	    this.aJSON = json;
 	  }
-	public void setBJSON(JSONObject json) {
+	public void setBJSON(JSONArray json) {
 		this.bJSON = json;
 	}
 	public void setATotal(Integer total) {
@@ -109,10 +131,10 @@ public class SkillsHistogram {
 	public Integer getBTotal() {
 		return this.bTotal;
 	}
-	public JSONObject getAJSON() {
+	public JSONArray getAJSON() {
 		return this.aJSON;
 	}
-	public JSONObject getBJSON() {
+	public JSONArray getBJSON() {
 		return this.bJSON;
 	}
 	public static void main(String[] args) throws Exception {

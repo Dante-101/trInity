@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Trinity - Searchin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://twitter.github.io/typeahead.js/css/examples.css"> 
 
     <!-- Le styles -->
-    <link href=" http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/metro-bootstrap.css">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -45,7 +45,7 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -53,7 +53,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Liri</a>
+          <a class="brand" href="#">trInity</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -66,40 +66,46 @@
     </div>
 
     <div class="container">
-      <div class="example example-countries">         
-                    <h2 class="example-name">Speak to Liri!</h2>        
-                    <div class="demo"> <input id="target" class="typeahead" type="text" placeholder="">  </div>          
-                        </div> 
-
-       <br>
-    
-       <div id = "profile-container" >
-        <ul id = "people_list" class = "thumbnails">
-        </ul>
-       </div>
+    	<div class="example example-countries"> 
+    		<img src="icon.png" width ="480" height="180"/>               
+    		<div class="demo"> <input id="target" class="typeahead" type="text" placeholder="">  </div>          
+      	</div> 
+      	<br>
+      	<div id = "profile-container">
+      	</div>
     </div> 
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src=" http://twitter.github.io/bootstrap/assets/js/jquery.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-alert.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-modal.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-tab.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-popover.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-button.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-carousel.js"></script>
-    <script src=" http://twitter.github.io/bootstrap/assets/js/bootstrap-typeahead.js"></script>
-    <script src="http://twitter.github.io/typeahead.js/js/hogan-2.0.0.js"></script>     
-    <script src="http://twitter.github.io/typeahead.js/js/jquery-1.9.1.min.js"></script>     
-    <script src="http://twitter.github.io/typeahead.js/releases/latest/typeahead.js">      </script>     
-    <script>
+<script type="text/javascript" src="docs/jquery-1.8.0.js"></script>
+<script type="text/javascript" src="docs/bootstrap-tooltip.js"></script>
+<script type="text/javascript" src="docs/bootstrap-alert.js"></script>
+<script type="text/javascript" src="docs/bootstrap-button.js"></script>
+<script type="text/javascript" src="docs/bootstrap-carousel.js"></script>
+<script type="text/javascript" src="docs/bootstrap-collapse.js"></script>
+<script type="text/javascript" src="docs/bootstrap-dropdown.js"></script>
+<script type="text/javascript" src="docs/bootstrap-modal.js"></script>
+<script type="text/javascript" src="docs/bootstrap-popover.js"></script>
+<script type="text/javascript" src="docs/bootstrap-scrollspy.js"></script>
+<script type="text/javascript" src="docs/bootstrap-tab.js"></script>
+<script type="text/javascript" src="docs/bootstrap-transition.js"></script>
+<script type="text/javascript" src="docs/bootstrap-typeahead.js"></script>
+<script type="text/javascript" src="docs/jquery.validate.js"></script>
+<script type="text/javascript" src="docs/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript" src="docs/jquery.unobtrusive-ajax.js"></script>
+<script type="text/javascript" src="docs/metro-bootstrap/metro-docs.js"></script>
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36060270-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>     
+<script>
 var postToServer = function(url) {
   var data;
   $.ajax({
@@ -107,24 +113,31 @@ var postToServer = function(url) {
   url: "http://localhost:8081/it?query="+encodeURIComponent(url),
   data: data,
   success: function(data, status, xhr) {
-  	$("#people_list").empty();
+  	$("#profile-container").empty();
     data = data.values; 
     for(var i=0;i<data.length;i++) {
-    $("#people_list").append('<li class="span4"><div class="thumbnail" style="float:left"><img src="'+data[i].pictureUrl+'"/></div><div style="float:left;margin-left:20px"><p align="left">'+data[i].formattedName+'<br/>'+"Amazon Inc"+'<br/>'+"Bengaluru"+'</p>'+'</div></li>');
+    	var j = Math.floor(i/3);
+    	if(i%3 == 0) { 
+    		$("#profile-container").append('<div class="row-fluid" id="row-'+j+'"></div>');
+    	}
+		$('#row-'+j).append(
+		'<div class="span4"><a ref="http://www.linkedin.com"><img src="'
+		+data[i].pictureUrl+'" onerror="this.src=\'wutu.jpg\'"/></a>'+'<p>'
+		+ data[i].name+ '</p><p>'+data[i].headline+'</p></div>')
 	}
   }
   });
 }
 $('#target').bind('keypress',function(e) {
   if(e.keyCode==13)
-  {
+  { 
   	var val = this.value;
     postToServer(val);
   }
 });
 
-    </script>
+</script>
 
-  </body>
+</body>
 </html>
 

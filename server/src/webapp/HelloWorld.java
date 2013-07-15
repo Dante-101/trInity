@@ -50,7 +50,7 @@ public class HelloWorld extends AbstractHandler
 
         SslSelectChannelConnector ssl_connector = new SslSelectChannelConnector();
         String jetty_home = 
-          System.getProperty("jetty.home","/Users/Gaurav/Desktop/LinkedIn Hack");
+          System.getProperty("jetty.home","/Users/nikunjy/Downloads/jetty-distribution-7.6.11.v20130520/etc/");
         System.setProperty("jetty.home",jetty_home);
         ssl_connector.setPort(8449);
         SslContextFactory cf = ssl_connector.getSslContextFactory();

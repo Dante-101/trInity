@@ -31,36 +31,13 @@ public class HelloHandler extends HttpServlet
 	private final static String REQ_PARAMETER = "query";
 	final static AskZiggyNLUEndpoint nlpLib = new AskZiggyNLUEndpoint(); 
 
-	/* public void handle(String target,Request baseRequest,HttpServletRequest request,HttpServletResponse response) 
-        throws IOException, ServletException
-    {
-        response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        baseRequest.setHandled(true);
-        System.out.println(request.getParameter("name"));
-
-        Cookie[] cookies = request.getCookies();
-
-        System.out.println(cookies.length);
-        Map<String,String> vals = request.getParameterMap();
-        for (Map.Entry entry : vals.entrySet()) {
-        	System.out.println(entry.getKey()+" "+entry.getValue());
-        }
-        response.getWriter().println("<h1>Hello World</h1>");
-    }*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		response.setContentType("text/html;charset=utf-8");
 		response.setStatus(HttpServletResponse.SC_OK);
 		Cookie[] cookies = request.getCookies();
 		System.out.println(cookies.length);
-		/*for(int i=0;i<cookies.length;i++) {
-			System.out.println(cookies[i].getName());
-			System.out.println(cookies[i].getName().length());
-		}*/
-		
 		boolean flag = false;
-		
 		for(int i=0;i<cookies.length;i++){
 			
 			//System.out.println(cookies[i].getName().substring(0, 13).equals("linkedin_oauth"));
@@ -144,7 +121,8 @@ public class HelloHandler extends HttpServlet
 						String action = ((JSONObject)retJsonArr.getJSONObject(0).get("ACTION")).getString("value");
 						String  = ((JSONObject)retJsonArr.getJSONObject(0).get("ACTION")).getString("value");
 						 */
-						String result = ControllerFactory.getResultForQuery(action, input);
+						ControllerFactory factory = new ControllerFactory();
+						String result = factory.getResultForQuery(action, input);
 						response.getWriter().println(result);
 					}
 					
